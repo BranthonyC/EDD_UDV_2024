@@ -1,48 +1,42 @@
 package com.example.classes;
 
+// TDA BubbleSort Ordanamiento Burbuja
+// Complejidad temporal: O(n^2)
+// Complejidad espacial: O(1)
+// BubbleSort es un algoritmo de ordenamiento que recorre el arreglo varias veces, comparando cada par de elementos adyacentes y 
+// realizando un intercambio si están en el orden incorrecto. El proceso se repite hasta que el arreglo esté ordenado.
+
 public class BubbleSort {
 
-    public static void bubbleSort(int[] array) {
+    // imprimir contenido del arreglo
+    public static void imprimirArreglo(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+    }
+
+    // Compara los elementos adyacentes de la lista.
+    // En cuanto a espacio es O(1) ya que no se utiliza memoria adicional
+    public static void bubbleSort(int[] array) { // O(n^2) en cuanto a tiempo
         int n = array.length;
-        for (int i = 0; i < n - 1; i++) {
-            System.out.println("Iteración " + (i + 1) + ":");
-            boolean intercambiado = false;
-            for (int j = 0; j < n - i - 1; j++) {
-                if (array[j] > array[j + 1]) {
-                    // Intercambia los elementos
-                    int temp = array[j];
-                    System.out.println("Intercambiando " + array[j] + " con " + array[j + 1]);
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
-                    intercambiado = true;
+        for (int i = 0; i < n - 1; i++) { // O(nxn) => O(n^2)
+            System.out.println("Iteracion " + (i + 1) + ":"); // O(1)
+            boolean intercambiado = false; // O(1)
+            for (int j = 0; j < n - 1; j++) { // O(6n) => O(n)
+                if (array[j] > array[j + 1]) { // es el actual, mayor que el siguiente // O(1)
+                    int temp = array[j]; // O(1)
+                    System.out.println("Intercambiando " + array[j] + " con " + array[j + 1]); // O(1)
+                    array[j] = array[j + 1]; // O(1)
+                    array[j + 1] = temp; // O(1)
+                    intercambiado = true; // O(1)
                 }
             }
             // Imprime el estado del arreglo después de cada iteración
-            imprimirEstadoArreglo(array);
-
-            // Si no se realizó ningún intercambio en esta iteración, significa que el
-            // arreglo está ordenado
+            imprimirArreglo(array);
             if (!intercambiado) {
                 break;
             }
         }
     }
-
-    // Método para imprimir el estado actual del arreglo
-    public static void imprimirEstadoArreglo(int[] array) {
-        for (int num : array) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
-    }
-
-    // public static void main(String[] args) {
-    // int[] array = {64, 34, 25, 12, 22, 11, 90};
-    // System.out.println("Arreglo original:");
-    // imprimirEstadoArreglo(array);
-    // bubbleSort(array);
-    // System.out.println("\nArray ordenado usando Bubble Sort:");
-    // imprimirEstadoArreglo(array);
-    // }
-
 }

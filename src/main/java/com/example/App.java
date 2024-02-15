@@ -19,7 +19,16 @@ public class App
         for (int i = 0; i < arreglo.length; i++) {
             arreglo[i] = random.nextInt(101);
         }
-        BubbleSort.bubbleSort(arreglo);
+
+        // System.out.println("Arreglo original:");
+        // BubbleSort.imprimirArreglo(arreglo);
+
+        // BubbleSort.bubbleSort(arreglo);
+
+        // System.out.println("Arreglo ordenado:");
+        // BubbleSort.imprimirArreglo(arreglo);
+
+        // BubbleSort.bubbleSort(arreglo);
 
         // long inicio = System.currentTimeMillis();
         // // Código a medir
