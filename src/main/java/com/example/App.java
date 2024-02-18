@@ -1,6 +1,9 @@
 package com.example;
 import com.example.classes.BubbleSort;
 import com.example.classes.Complejidad;
+import com.example.classes.InsertionSort;
+import com.example.classes.SelectionSort;
+
 import java.util.Random;
 
 /**
@@ -11,7 +14,7 @@ public class App
 {
 
     public static void main(String[] args) {
-        int N_ELEMENTOS = 10;
+        int N_ELEMENTOS = 8;
         
         int[] arreglo = new int[N_ELEMENTOS];
         Random random = new Random();
@@ -20,23 +23,23 @@ public class App
             arreglo[i] = random.nextInt(101);
         }
 
-        // System.out.println("Arreglo original:");
-        // BubbleSort.imprimirArreglo(arreglo);
+        System.out.println("Arreglo original:");
+        BubbleSort.imprimirArreglo(arreglo);
 
-        // BubbleSort.bubbleSort(arreglo);
+        BubbleSort.bubbleSort(arreglo);
+        // InsertionSort.sort(arreglo);
+        // SelectionSort.sort(arreglo);
 
-        // System.out.println("Arreglo ordenado:");
-        // BubbleSort.imprimirArreglo(arreglo);
+        System.out.println("Arreglo ordenado:");
+        BubbleSort.imprimirArreglo(arreglo);
 
-        // BubbleSort.bubbleSort(arreglo);
-
-        // long inicio = System.currentTimeMillis();
-        // // Código a medir
-        // int minimoLineal = Complejidad.encontrarMinimoLineal(arreglo);
-        // long fin = System.currentTimeMillis();
+        long inicio = System.currentTimeMillis();
+        // Código a medir
+        int minimoLineal = Complejidad.encontrarMinimoLineal(arreglo);
+        long fin = System.currentTimeMillis();
 
         // System.out.println("Mínimo (Orden Lineal): " + minimoLineal);
-        // System.out.println("Tiempo de ejecución (Orden Lineal): " + (fin - inicio) + " milisegundos");
+        System.out.println("Tiempo de ejecución (Orden Lineal): " + (fin - inicio) + " milisegundos");
 
         // // Orden cuadrático
         // inicio = System.currentTimeMillis();

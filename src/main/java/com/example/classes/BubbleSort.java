@@ -23,7 +23,7 @@ public class BubbleSort {
         for (int i = 0; i < n - 1; i++) { // O(nxn) => O(n^2)
             System.out.println("Iteracion " + (i + 1) + ":"); // O(1)
             boolean intercambiado = false; // O(1)
-            for (int j = 0; j < n - 1; j++) { // O(6n) => O(n)
+            for (int j = 0; j < n - 1 - i; j++) { // O(6n) => O(n)
                 if (array[j] > array[j + 1]) { // es el actual, mayor que el siguiente // O(1)
                     int temp = array[j]; // O(1)
                     System.out.println("Intercambiando " + array[j] + " con " + array[j + 1]); // O(1)
