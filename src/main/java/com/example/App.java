@@ -1,10 +1,8 @@
 package com.example;
-import com.example.classes.BubbleSort;
-import com.example.classes.Complejidad;
-import com.example.classes.InsertionSort;
-import com.example.classes.SelectionSort;
 
-import java.util.Random;
+import com.example.classes.Estudiante;
+import com.example.utils.LectorCsv;
+import java.util.Scanner;
 
 /**
  * Hello world!
@@ -14,45 +12,49 @@ public class App
 {
 
     public static void main(String[] args) {
-        int N_ELEMENTOS = 8;
+        Scanner scanner = new Scanner(System.in);
+        Estudiante[] estudiantes = null;
         
-        int[] arreglo = new int[N_ELEMENTOS];
-        Random random = new Random();
+        boolean salir = false;
 
-        for (int i = 0; i < arreglo.length; i++) {
-            arreglo[i] = random.nextInt(101);
+        while (!salir) {
+            System.out.println("Menú:");
+            System.out.println("1. Cargar datos");
+            System.out.println("2. Imprimir arreglo");
+            System.out.println("3. Salir del programa");
+            System.out.print("Seleccione una opción: ");
+
+            int opcion = scanner.nextInt();
+            scanner.nextLine(); // Limpiar el buffer
+
+            switch (opcion) {
+                case 1:
+                    // Cargar datos
+                    estudiantes = LectorCsv.leerEstudiantesDesdeCSV(
+                            "/Users/branthonycc/DaVinci/EDD/complejidad/src/main/java/com/example/datos.csv");
+                    System.out.println("¡Datos cargados correctamente!");
+                    break;
+                case 2:
+                    // Imprimir arreglo
+                    if (estudiantes == null) {
+                        System.out.println("Error: No hay datos cargados.");
+                    } else {
+                        System.out.println("Estudiantes cargados:");
+                        for (int i = 0; i < estudiantes.length; i++) {
+                            System.out.println(estudiantes[i].toString());
+                        }
+                    }
+                    break;
+                case 3:
+                    // Salir del programa
+                    salir = true;
+                    System.out.println("¡Hasta luego!");
+                    break;
+                default:
+                    System.out.println("Opción inválida. Por favor, seleccione una opción válida.");
+            }
         }
 
-        System.out.println("Arreglo original:");
-        BubbleSort.imprimirArreglo(arreglo);
-
-        BubbleSort.bubbleSort(arreglo);
-        // InsertionSort.sort(arreglo);
-        // SelectionSort.sort(arreglo);
-
-        System.out.println("Arreglo ordenado:");
-        BubbleSort.imprimirArreglo(arreglo);
-
-        long inicio = System.currentTimeMillis();
-        // Código a medir
-        int minimoLineal = Complejidad.encontrarMinimoLineal(arreglo);
-        long fin = System.currentTimeMillis();
-
-        // System.out.println("Mínimo (Orden Lineal): " + minimoLineal);
-        System.out.println("Tiempo de ejecución (Orden Lineal): " + (fin - inicio) + " milisegundos");
-
-        // // Orden cuadrático
-        // inicio = System.currentTimeMillis();
-        // int minimoCuadratico = Complejidad.encontrarMinimoCuadratico(arreglo);
-        // fin = System.currentTimeMillis();
-        // System.out.println("Mínimo (Orden Cuadrático): " + minimoCuadratico);
-        // System.out.println("Tiempo de ejecución (Orden Cuadrático): " + (fin - inicio) + " milisegundos");
-
-        // // Orden cúbico
-        // inicio = System.currentTimeMillis();
-        // int minimoCubico = Complejidad.encontrarMinimoCubico(arreglo);
-        // fin = System.currentTimeMillis();
-        // System.out.println("Mínimo (Orden Cúbico): " + minimoCubico);
-        // System.out.println("Tiempo de ejecución (Orden Cúbico): " + (fin - inicio) + " milisegundos");
+        scanner.close();
     }
 }
