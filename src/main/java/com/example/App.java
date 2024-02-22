@@ -25,10 +25,9 @@ public class App
 
         System.out.println("Arreglo original:");
         BubbleSort.imprimirArreglo(arreglo);
-
-        BubbleSort.bubbleSort(arreglo);
+        // BubbleSort.bubbleSort(arreglo);
         // InsertionSort.sort(arreglo);
-        // SelectionSort.sort(arreglo);
+        SelectionSort.sort(arreglo);
 
         System.out.println("Arreglo ordenado:");
         BubbleSort.imprimirArreglo(arreglo);
