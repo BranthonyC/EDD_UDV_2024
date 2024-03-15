@@ -33,13 +33,13 @@ public class EjercicioPilas {
 
     public static boolean esPalindromo(String texto) {
         LinkedList<Character> pila = new LinkedList<>();
-        LinkedList<Character> cola = new LinkedList<>();
+        Queue<Character> cola = new LinkedList<>();
 
         for (char c : texto.toCharArray()) {
             if (Character.isLetter(c)) {
                 c = Character.toLowerCase(c);
-                pila.push(c);
-                cola.add(c);
+                pila.push(c); // LIFO Last In, First Out
+                cola.add(c); // FIFO First In, First Out
             }
         }
 
